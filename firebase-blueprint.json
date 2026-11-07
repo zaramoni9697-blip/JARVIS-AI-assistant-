@@ -1,0 +1,81 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile and preferences in JARVIS AI",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Authenticated user UID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "Display name of the user" },
+        "photoUrl": { "type": "string", "description": "Avatar URL of the user" },
+        "languagePreference": { "type": "string", "description": "Language mode: auto, bn, or en", "enum": ["auto", "bn", "en"] },
+        "role": { "type": "string", "description": "User role: user or admin", "enum": ["user", "admin"] },
+        "status": { "type": "string", "description": "Account status: active or suspended", "enum": ["active", "suspended"] },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp" }
+      },
+      "required": ["userId", "email", "displayName", "languagePreference", "role", "status", "createdAt"]
+    },
+    "Memory": {
+      "title": "Memory",
+      "description": "Personal AI memory saved for the user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Memory document identifier" },
+        "userId": { "type": "string", "description": "Owner user UID" },
+        "title": { "type": "string", "description": "Brief title or summary of the memory" },
+        "content": { "type": "string", "description": "Details or knowledge snippet remembered by JARVIS" },
+        "category": { "type": "string", "description": "Category such as preference, fact, task, work, health" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp" }
+      },
+      "required": ["id", "userId", "title", "content", "category", "createdAt"]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "Chat and voice interaction history entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Conversation message ID" },
+        "userId": { "type": "string", "description": "User ID" },
+        "role": { "type": "string", "description": "Role of speaker", "enum": ["user", "assistant"] },
+        "content": { "type": "string", "description": "Message text" },
+        "detectedLanguage": { "type": "string", "description": "Detected language (e.g. bn, en, mixed)" },
+        "mode": { "type": "string", "description": "Interaction mode: voice, chat, coding", "enum": ["voice", "chat", "coding"] },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp" }
+      },
+      "required": ["id", "userId", "role", "content", "detectedLanguage", "mode", "createdAt"]
+    },
+    "AppStats": {
+      "title": "AppStats",
+      "description": "System analytics and status overview",
+      "type": "object",
+      "properties": {
+        "totalUsers": { "type": "number", "description": "Total registered users" },
+        "totalConversations": { "type": "number", "description": "Total conversations logged" },
+        "systemHealth": { "type": "string", "description": "Status of AI brain and services" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last stats calculation timestamp" }
+      },
+      "required": ["totalUsers", "totalConversations", "systemHealth", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Top-level collection storing user profiles and account metadata"
+    },
+    "/users/{userId}/memories/{memoryId}": {
+      "schema": "Memory",
+      "description": "Subcollection storing persistent personal memories remembered by JARVIS"
+    },
+    "/users/{userId}/conversations/{conversationId}": {
+      "schema": "Conversation",
+      "description": "Subcollection storing user chat and voice interaction logs"
+    },
+    "/app_stats/overview": {
+      "schema": "AppStats",
+      "description": "System usage metrics and admin diagnostics overview"
+    }
+  }
+}
