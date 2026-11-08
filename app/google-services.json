@@ -1,44 +1,26 @@
 {
   "project_info": {
-    "project_number": "296786881447",
-    "project_id": "model-choir-510316-a6",
-    "storage_bucket": "model-choir-510316-a6.firebasestorage.app"
+    "project_number": "638111668216",
+    "project_id": "jarvis-ai-5081d",
+    "storage_bucket": "jarvis-ai-5081d.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:296786881447:android:791cda3498fab1d90ca482",
+        "mobilesdk_app_id": "1:638111668216:android:6325b3437cd03a2e78680d",
         "android_client_info": {
           "package_name": "com.aistudio.jarvisai.qwnvkt"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "296786881447-k2opitpckagso2d9ps062qgulds5vcgp.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.aistudio.jarvisai.qwnvkt",
-            "certificate_hash": "85e57aa079a5cffc74bacf05ce1dc5b08d25d65f"
-          }
-        },
-        {
-          "client_id": "296786881447-l0aqu3jebbeu9cg6m1qh8dsamn6f6b2b.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDzaiNK6zM7K3m_xZqqyyFlE8-BkaqAZsw"
+          "current_key": "AIzaSyDCQv0gvmac8gO4BjpB13vANA94ulM6Rg8"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "296786881447-l0aqu3jebbeu9cg6m1qh8dsamn6f6b2b.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
