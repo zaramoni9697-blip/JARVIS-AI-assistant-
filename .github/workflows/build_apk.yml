@@ -2,9 +2,9 @@ name: Build JARVIS AI Android APK
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: ["main", "master"]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: ["main", "master"]
   workflow_dispatch:
 
 jobs:
@@ -18,18 +18,20 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: "17"
+          distribution: temurin
           cache: gradle
 
       - name: Grant Execute Permission for Gradle
-        run: chmod +x gradlew || true
+        run: chmod +x gradlew
 
-      - name: Inject google-services.json
-        run: echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > app/google-services.json
+      - name: Verify Firebase Config
+        run: |
+          test -s app/google-services.json
+          python3 -m json.tool app/google-services.json > /dev/null
 
       - name: Build Debug APK
-        run: gradle assembleDebug --stacktrace
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
